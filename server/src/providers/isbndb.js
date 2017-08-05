@@ -1,6 +1,6 @@
 /**
- * Google Books Provider
- * https://developers.google.com/books/docs/overview
+ * ISBNdb Provider
+ * http://isbndb.com/api/v2/docs
  */
 
 const fetch = require('node-fetch')
