@@ -1,14 +1,16 @@
 #!/usr/bin/env node --harmony
 require('dotenv').config()
 
-const gbooks = require('./providers/gbooks')
-
 process.on('unhandledRejection', r => console.log(r))
 
-const start = async () => {
-  const result = await gbooks.fetchBook('isbn:9782205049657', 'fr')
+const gbooks = require('./providers/googleBooks')
+const openLib = require('./providers/openLibrary')
 
-  result.items.forEach(e => console.log(e.volumeInfo.title))
+const start = async () => {
+  const result1 = await gbooks.getByISBN(9782205049657)
+  const result2 = await openLib.getByISBN(9782205049657)
+
+  console.log({ ...result1, ...result2 })
 }
 
 start()
