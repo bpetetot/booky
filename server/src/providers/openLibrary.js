@@ -1,6 +1,6 @@
 /**
  * Open library
- * https://openlibrary.org
+ * https://openlibrary.org/dev/docs/api/books
  */
 
 const fetch = require('node-fetch')

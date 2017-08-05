@@ -12,8 +12,7 @@ const API_KEY = process.env.GOOGLE_BOOKS_API_KEY
 
 const convertJson = (json) => {
   if (json && json.totalItems > 0) {
-    return json.items.map(({ id, volumeInfo }) => ({
-      id,
+    return json.items.map(({ volumeInfo }) => ({
       title: volumeInfo.title,
       subtitle: volumeInfo.subtitle,
       authors: volumeInfo.authors,
