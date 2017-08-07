@@ -2,39 +2,40 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Quagga from 'quagga'
 
-class Scanner extends Component {
-  constructor(props) {
-    super(props)
-    this.handleDetect = this.handleDetect.bind(this)
-  }
+import './scanner.css'
 
-  componentDidMount() {
+class Scanner extends Component {
+  async componentDidMount() {
     Quagga.init(
       {
+        frequency: 5,
+        numOfWorkers: 2,
+        locate: true,
+        decoder: { readers: ['ean_reader'] },
+        locator: {
+          halfSample: true,
+          patchSize: 'medium',
+        },
         inputStream: {
           name: 'Live',
           type: 'LiveStream',
-          target: this.scan,
+          target: this.scannerContainer,
           constraints: {
-            width: 640,
-            height: 480,
+            width: 768,
+            height: 432,
             facingMode: 'environment',
           },
           area: {
-            // defines rectangle of the detection/localization area
-            top: '0%', // top offset
-            right: '0%', // right offset
-            left: '0%', // left offset
-            bottom: '0%', // bottom offset
+            top: '0%',
+            right: '0%',
+            left: '0%',
+            bottom: '0%',
           },
-        },
-        decoder: {
-          readers: ['ean_reader'],
         },
       },
       () => {
+        Quagga.onDetected(this.props.onDetect)
         Quagga.start()
-        Quagga.onDetected(this.handleDetect)
       },
     )
   }
@@ -43,18 +44,16 @@ class Scanner extends Component {
     Quagga.stop()
   }
 
-  handleDetect({ codeResult }) {
-    this.props.onDetect(codeResult.code)
-    Quagga.stop()
-  }
-
   render() {
     return (
       <div
+        className="scanner"
         ref={(e) => {
-          this.scan = e
+          this.scannerContainer = e
         }}
-      />
+      >
+        <div className="scanner-line" />
+      </div>
     )
   }
 }

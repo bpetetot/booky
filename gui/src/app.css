@@ -1,0 +1,11 @@
+.app-content {
+  padding: 1em;
+}
+
+.cc-panel {
+  max-width: 500px;
+}
+
+.cc-panel--content {
+  padding: 0 !important;
+}
