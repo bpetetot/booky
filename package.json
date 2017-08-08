@@ -1,0 +1,46 @@
+{
+  "name": "booky-app",
+  "version": "0.1.0",
+  "description": "booky app",
+  "main": "./server/index.js",
+  "repository": "https://github.com/bpetetot/booky",
+  "author": "Benjamin Petetot <bpetetot@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "8.1.x"
+  },
+  "scripts": {
+    "start": "./server/index.js",
+    "heroku-postbuild": "cd gui/ && npm install && && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "koa": "^2.3.0",
+    "koa-mount": "^3.0.0",
+    "koa-route": "^3.2.0",
+    "koa-static": "^4.0.1",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "gui/node_modules"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base"
+    ],
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ],
+      "no-return-await": 0
+    }
+  }
+}
