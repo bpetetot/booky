@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "./server/index.js",
-    "heroku-postbuild": "cd gui && npm install && npm run build"
+    "heroku-postbuild": "cd gui && npm i && npm i --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
@@ -28,10 +28,6 @@
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0"
   },
-  "cacheDirectories": [
-    "node_modules",
-    "gui/node_modules"
-  ],
   "eslintConfig": {
     "extends": [
       "airbnb-base"
