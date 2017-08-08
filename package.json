@@ -11,8 +11,9 @@
     "yarn": "0.27.5"
   },
   "scripts": {
-    "start": "./server/index.js",
-    "heroku-postbuild": "cd gui && npm i && npm i --only=dev --no-shrinkwrap && npm run build"
+    "start": "node --harmony ./server",
+    "heroku-postbuild": "cd gui && npm i && npm i --only=dev --no-shrinkwrap && npm run build",
+    "deploy": "git push heroku master"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
