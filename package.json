@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "./server/index.js",
-    "heroku-postbuild": "cd gui && yarn && yarn build"
+    "heroku-postbuild": "cd gui && npm install && npm run build"
   },
   "dependencies": {
     "dotenv": "^4.0.0",
