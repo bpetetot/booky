@@ -7,7 +7,7 @@ const serve = require('koa-static')
 
 const books = require('./services/books')
 
-const PORT = '3001'
+const PORT = process.env.PORT || 3001
 const STATIC_FILES = path.resolve(__dirname, '..', 'gui', 'build')
 
 const api = () => {
